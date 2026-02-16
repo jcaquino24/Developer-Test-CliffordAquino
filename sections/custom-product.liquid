@@ -1,0 +1,371 @@
+{%- style -%}
+  .sri-section-{{ section.id }} {
+    padding: 60px 0;
+  }
+  .sri-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .sri-main-row {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+  }
+  .sri-col-left { 
+    flex: 1.2; 
+    display: flex; 
+    flex-direction: column; 
+}
+  .sri-col-center { 
+    flex: 2; 
+    text-align: center; 
+    position: relative; 
+}
+  .sri-col-right { 
+    flex: 0.4; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 10px;
+ }
+  .sri-badge-wrap { 
+    width: 142px;
+    margin-bottom: 20px; 
+    grid-area: icon;
+}
+  .sri-title-container {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    grid-template-areas: "title icon";
+}
+  .sri-title {
+    color: #C19B61;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 1.2;
+    grid-area: title;
+}
+  .sri-tagline {
+    font-size: 17px;
+    margin-bottom: 30px;
+    line-height: 30px;
+    color: #333333;
+}
+  .sri-feature-list { 
+    list-style: none; 
+    padding: 0; 
+    margin-bottom: 40px; 
+}
+  .sri-feature-list li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    font-size: 17px;
+    color: #333333;
+}
+.sri-sale-label {
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 10px;
+    line-height: 23px;
+    p {
+        margin:0;
+    }
+}
+.sri-old-price {
+    text-decoration: line-through;
+    color: #C0C0C0;
+    font-size: 18px;
+}
+.sri-new-price {
+    color: #C19B61;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+  .sri-check { 
+    color: #C19B61; 
+    margin-right: 12px; 
+    font-weight: bold; 
+}
+.sri-btn {
+    display: block;
+    width: 360px;
+    height: 62px;
+    background: #C19B61;
+    color: white;
+    padding: 19px 23px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 5px;
+    font-size: 22px;
+    order: 1;
+    line-height: 23.8px;
+    border: 1px solid #EEEEEE;
+}
+  .sri-pricing-area { 
+    display: flex; 
+    flex-direction: column; 
+    text-align: center; 
+    max-width: 320px; 
+}
+  
+  .sri-carousel-wrapper { 
+    position: relative; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    overflow: hidden; 
+}
+  .sri-main-img { 
+    max-width: 100%; 
+    height: auto; 
+    transition: opacity 0.3s ease; 
+}
+  .sri-nav {
+    position: absolute; 
+    top:0; 
+    background: none; 
+    border: none; 
+    font-size: 24px; 
+    cursor: pointer; 
+    z-index: 10; 
+    color: #C19B61; 
+    padding: 10px;
+  }
+  .sri-nav.prev { 
+    left: 10px; 
+}
+  .sri-nav.next { 
+    left: 50px; 
+}
+  .sri-thumb { 
+    border: 1px solid #eee; 
+    border-radius: 4px; 
+    overflow: hidden; 
+    cursor: pointer; 
+}
+  .sri-thumb img { 
+    width: 100%; 
+    display: block; 
+}
+  .active-thumb { 
+    border: 2px solid #C19B61; 
+}
+  .sri-trust-wrapper { 
+    margin-top: 40px; 
+}
+  .sri-trust-grid { 
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 20px; 
+    text-align: left; 
+}
+  .sri-trust-item { 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+    font-size: 17px; 
+}
+  .sri-trust-item img { 
+    width: 34px; 
+    height: 34px; 
+    object-fit: contain; 
+}
+
+  .mobile-trust-container { display: none; }
+
+
+  @media (max-width: 600px) {
+    .sri-main-row { flex-direction: column; align-items: center; text-align: center; }
+    .sri-col-center { order: 1; width: 100%; }
+    .sri-col-left { order: 2; width: 100%; }
+    .sri-col-right { display: none; }
+    .sri-nav { top: 0; }
+    .sri-feature-list li { text-align: left; }
+    .desktop-trust-container { display: none; }
+    .mobile-trust-container { 
+      display: block; 
+      order: 2;
+      margin-top: 30px; 
+      width: 100%; 
+      max-width: none; 
+    }
+    .sri-trust-grid { grid-template-columns: 1fr; gap: 15px; }
+    .sri-title-container {
+    display: grid;
+    grid-template-columns: auto;
+    align-items: center;
+    grid-template-areas:
+        "icon"
+        "title";
+    justify-items: center;
+}
+
+.sri-btn {
+    width: 100%;;
+}
+.sri-pricing-area {
+    max-width: none;
+}
+  }
+
+{% if section.settings.show_image_mobile %}
+@media (max-width: 600px) { 
+    .sri-col-center{ 
+        display:none;
+    }
+}
+{% endif %}
+{%- endstyle -%}
+
+{%- assign main_product = all_products[section.settings.featured_product] -%}
+
+<section class="sri-section-{{ section.id }}">
+  <div class="sri-container">
+    <div class="sri-main-row">
+      
+      <div class="sri-col-left">
+
+      <div class="sri-title-container">
+        {% if section.settings.badge != blank %}
+          <div class="sri-badge-wrap"><img src="{{ section.settings.badge | img_url: '250x' }}" alt="Badge"></div>
+        {% endif %}
+        <h2 class="sri-title">{% if section.settings.custom_title != blank %}{{ section.settings.custom_title }}{% else %}{{ main_product.title }}{% endif %}</h2>
+
+       </div>
+
+        <div class="sri-tagline">
+        <p>{{ section.settings.tagline }}</p>
+        </div>
+        
+        <ul class="sri-feature-list">
+          {% for block in section.blocks %}
+            {% if block.type == 'feature_details' %}
+              <li {{ block.shopify_attributes }}><span class="sri-check">✓</span> {{ block.settings.item_text }}</li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+
+        <div class="sri-pricing-area">
+        <div class="sri-sale-label">
+          <p>{{ section.settings.sale_label }}</p>
+          <p>{{ section.settings.sale_label_bottom }}</p>
+        </div>
+          <span class="sri-old-price">{{ main_product.compare_at_price | money }}</span>
+          <span class="sri-new-price">{{ main_product.price | money }}</span>
+          <a href="{{ main_product.url }}" class="sri-btn">{{ section.settings.button_text }}</a>
+
+          <div class="mobile-trust-container">
+            <div class="sri-trust-grid">
+              {% for block in section.blocks %}
+                {% if block.type == 'trust_badge' %}
+                  <div class="sri-trust-item">
+                    {% if block.settings.icon != blank %}<img src="{{ block.settings.icon | img_url: '60x' }}">{% endif %}
+                    <span>{{ block.settings.text }}</span>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sri-col-center">
+        <div class="sri-carousel-wrapper">
+          <button class="sri-nav prev" onclick="moveSlide(-1)">&#10094;</button>
+          <button class="sri-nav next" onclick="moveSlide(1)">&#10095;</button>
+          <img id="MainImg-{{ section.id }}" src="{{ main_product.featured_image | img_url: '1000x' }}" class="sri-main-img" alt="{{ main_product.title }}">
+        </div>
+
+        <div class="sri-trust-wrapper desktop-trust-container">
+          <div class="sri-trust-grid">
+            {% for block in section.blocks %}
+              {% if block.type == 'trust_badge' %}
+                <div class="sri-trust-item" {{ block.shopify_attributes }}>
+                  {% if block.settings.icon != blank %}<img src="{{ block.settings.icon | img_url: '60x' }}">{% endif %}
+                  <span>{{ block.settings.text }}</span>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <div class="sri-col-right">
+        {% for image in main_product.images limit: 6 %}
+          <div class="sri-thumb" onclick="updateMainImage('{{ image.src | img_url: '1000x' }}', {{ forloop.index0 }})">
+            <img src="{{ image.src | img_url: '200x200', crop: 'center' }}" class="gallery-js-{{ section.id }} {% if forloop.first %}active-thumb{% endif %}" alt="Gallery">
+          </div>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  let currentIdx = 0;
+  const productImages = [
+    {% for image in main_product.images limit: 6 %}
+      "{{ image.src | img_url: '1000x' }}"{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ];
+
+  function updateMainImage(src, index) {
+    const mainImg = document.getElementById('MainImg-{{ section.id }}');
+    mainImg.style.opacity = '0.5';
+    setTimeout(() => {
+      mainImg.src = src;
+      mainImg.style.opacity = '1';
+    }, 150);
+    currentIdx = index;
+    document.querySelectorAll('.gallery-js-{{ section.id }}').forEach((img, i) => {
+      img.classList.toggle('active-thumb', i === index);
+    });
+  }
+
+  function moveSlide(direction) {
+    currentIdx += direction;
+    if (currentIdx >= productImages.length) currentIdx = 0;
+    if (currentIdx < 0) currentIdx = productImages.length - 1;
+    updateMainImage(productImages[currentIdx], currentIdx);
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Custom Feature Product",
+  "settings": [
+    { "type": "product", "id": "featured_product", "label": "Select Product" },
+    { "type": "text", "id": "custom_title", "label": "Override Title", "default": "SRI DRYQ" },
+    { "type": "richtext", "id": "tagline", "label": "Tagline"},
+    { "type": "checkbox", "id": "show_image_mobile", "label": "Hide Image on Mobile", "default": true },
+    { "type": "image_picker", "id": "badge", "label": "Award Badge" },
+    { "type": "text", "id": "sale_label", "label": "Sale Text", "default": "Limited Time Sale" },
+    { "type": "text", "id": "sale_label_bottom", "label": "Sale Text", "default": "Limited Time Sale" },
+    { "type": "text", "id": "button_text", "label": "Button Label", "default": "Order Now" }
+  ],
+  "blocks": [
+    {
+      "type": "feature_details",
+      "name": "Feature Details",
+      "settings": [
+        { "type": "text", "id": "item_text", "label": "Checklist Item", "default": "Intelligent heat control" }
+      ]
+    },
+    {
+      "type": "trust_badge",
+      "name": "Trust Grid Item",
+      "settings": [
+        { "type": "image_picker", "id": "icon", "label": "Icon" },
+        { "type": "text", "id": "text", "label": "Label Text", "default": "Secure Checkout" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Custom Feature Product" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,348 @@
+{%- style -%}
+  .hero-wrapper-{{ section.id }} {
+    background-image: url('{{ section.settings.image | image_url: width: 2000 }}');
+    background-size: cover;
+    background-position: center;
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 600px;
+  }
+
+  .hero-card {
+    background: rgba(255, 255, 255, {{ section.settings.bg_opacity }}); 
+    backdrop-filter: blur({{ section.settings.bg_blur }}px);
+    max-width: 1200px;
+    width: 100%;
+    padding: 50px 30px;
+    text-align: center;
+    border-radius: {{ section.settings.card_radius }}px;
+    border: {{ section.settings.card_border_width }}px solid {{ section.settings.card_border_color }};
+  }
+
+  .title-row-{{ section.id }} {
+    margin-bottom: 5px;
+    line-height: 1.1;
+  }
+  .title-main-{{ section.id }} {
+    font-size: {{ section.settings.title_size }}px;
+    color: {{ section.settings.title_color }};
+    font-weight: {{ section.settings.title_weight }};
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+  .title-accent-{{ section.id }} {
+    font-size: {{ section.settings.title_size }}px;
+    color: {{ section.settings.accent_color }};
+    font-weight: {{ section.settings.title_weight_acc }};
+    font-style: italic;
+    text-transform: uppercase;
+  }
+
+  .discount-row-{{ section.id }} {
+    margin-bottom: 30px;
+    line-height: 35px;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+
+  }
+  .disc-base-{{ section.id }} {
+    font-size: {{ section.settings.disc_size }}px;
+    color: {{ section.settings.disc_color }};
+    font-weight: {{ section.settings.disc_weight }};
+  }
+  .disc-highlight-{{ section.id }} {
+    font-size: {{ section.settings.disc_size }}px;
+    color: {{ section.settings.accent_color }};
+    font-weight: {{ section.settings.disc_weight_acc }};
+    font-style: italic;
+  }
+
+  .btn-group-{{ section.id }} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    width: 100%;
+  }
+
+  .btn-order-{{ section.id }} {
+    background-color: {{ section.settings.order_btn_bg }};
+    color: {{ section.settings.order_btn_text_color }};
+    width: 100%;
+    max-width: 407px;
+    padding: 19px 23px;
+    text-decoration: none;
+    font-weight: {{ section.settings.btn_weight }};
+    font-size: {{ section.settings.btn_text_size }}px;
+    border-radius: 5px;
+    display: inline-block;
+    height: 62px;
+  }
+
+  .btn-paypal-{{ section.id }} {
+    background-color: {{ section.settings.paypal_btn_bg }};
+    width: 100%;
+    max-width: 407px;
+    padding: 10px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    height: 62px;
+    img {
+        width: 100px;
+        height: 100px;
+    }
+  }
+  .paypal-text-{{ section.id }} {
+    font-size: {{ section.settings.paypal_text_size }}px;
+    font-weight: {{ section.settings.paypal_weight }};
+    color: {{ section.settings.paypal_btn_text_color }};
+    line-height: 1.1;
+  }
+
+  .afterpay-row-{{ section.id }} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 40px;
+    font-size: {{ section.settings.after_text_size }}px;
+    color: {{ section.settings.after_color }};
+    font-weight: {{ section.settings.after_weight }};
+  }
+
+  .afterpay-badge-box {
+    background: {{ section.settings.afterpay_badge_bg }};
+    padding: 4px 18px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .timer-block {
+    background: {{ section.settings.timer_block_bg }};
+    color: {{ section.settings.timer_block_text }};
+    width: 65px;
+    height: 75px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 4px;
+  }
+
+  .section-divider-{{ section.id }} {
+    width: 55px;
+    height: 1px;
+    background-color: #D3D3D3;
+    margin: 25px auto;
+    border: none;        
+}
+  .timer-block .num { 
+    font-size: 24px; font-weight: 700; }
+  .timer-block .label { 
+    font-size: 10px; text-transform: uppercase; font-weight: 500; 
+}
+
+  @media (max-width: 600px) {
+    .btn-paypal-{{ section.id }} {
+    max-width: 202px;
+    img {
+        width: 75px;
+        height: 73px;
+    }
+  }
+
+  .btn-order-{{ section.id }} {
+    max-width: 202px;
+  }
+   .afterpay-row-{{ section.id }} {
+    display:block;
+   }
+  .afterpay-badge-box {
+    margin-top: 5%;
+}
+  }
+{%- endstyle -%}
+
+<section class="hero-wrapper-{{ section.id }}">
+  <div class="hero-card">
+    <div class="title-row-{{ section.id }}">
+      <span class="title-main-{{ section.id }}">{{ section.settings.title_1 }}</span>
+      <span class="title-accent-{{ section.id }}">{{ section.settings.title_2 }}</span>
+    </div>
+
+    <div class="discount-row-{{ section.id }}">
+      <span class="disc-base-{{ section.id }}">{{ section.settings.disc_pre }}</span>
+      <span class="disc-highlight-{{ section.id }}">{{ section.settings.disc_highlight }}</span>
+      <span class="disc-base-{{ section.id }}">{{ section.settings.disc_post }}</span>
+    </div>
+
+    <div class="btn-group-{{ section.id }}">
+      <a href="{{ section.settings.link | default: '#' }}" class="btn-order-{{ section.id }}">
+        {{ section.settings.btn_text }}
+      </a>
+      
+      {% if section.settings.show_paypal %}
+        <a class="btn-paypal-{{ section.id }}">
+        <span class="paypal-text-{{ section.id }}">{{ section.settings.paypal_btn_text }}</span>
+        {% if section.settings.paypal_icon != blank %}
+          <img src="{{ section.settings.paypal_icon | image_url: width: 300 }}" alt="PayPal">
+        {% endif %}
+        </a>
+      {% endif %}
+    </div>
+
+    {% if section.settings.show_afterpay %}
+    <div class="afterpay-row-{{ section.id }}">
+      <span>{{ section.settings.afterpay_full_text }}</span>
+      {% if section.settings.afterpay_icon != blank %}
+        <div class="afterpay-badge-box">
+          <img src="{{ section.settings.afterpay_icon | image_url: width: 150 }}" style="height:22px;" alt="Afterpay">
+        </div>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <div class="section-divider-{{ section.id }}"></div>
+
+    <div class="timer-container">
+      <p style="font-weight:600; font-size:16px; margin-bottom:15px; color: {{ section.settings.timer_block_title }};">{{ section.settings.sale_text }}</p>
+      <div class="countdown-timer" style="display:flex; justify-content:center; gap:10px;">
+        <div class="timer-block">
+          <span class="num" id="d-{{ section.id }}">0</span><span class="label" id="dl-{{ section.id }}">DAYS</span>
+        </div>
+        <div class="timer-block">
+          <span class="num" id="h-{{ section.id }}">0</span><span class="label" id="hl-{{ section.id }}">HOURS</span>
+        </div>
+        <div class="timer-block">
+          <span class="num" id="m-{{ section.id }}">0</span><span class="label" id="ml-{{ section.id }}">MINUTES</span>
+        </div>
+        <div class="timer-block">
+          <span class="num" id="s-{{ section.id }}">0</span><span class="label" id="sl-{{ section.id }}">SECONDS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // We replace '/' with '-' and ensure the string is trimmed to help browser parsing
+  const dateString = "{{ section.settings.end_date }}".trim().replace(/\//g, "-");
+  const targetTime = new Date(dateString).getTime();
+
+  const updateTimer = () => {
+    const now = new Date().getTime();
+    const diff = targetTime - now;
+
+    // If the date is invalid or in the past
+    if (isNaN(targetTime) || diff <= 0) {
+      document.querySelectorAll(".timer-block .num").forEach(el => el.innerText = "0");
+      return;
+    }
+
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+    const dEl = document.getElementById("d-{{ section.id }}");
+    const hEl = document.getElementById("h-{{ section.id }}");
+    const mEl = document.getElementById("m-{{ section.id }}");
+    const sEl = document.getElementById("s-{{ section.id }}");
+    const dlEl = document.getElementById("dl-{{ section.id }}");
+
+    if(dEl) dEl.innerText = d;
+    if(hEl) hEl.innerText = h;
+    if(mEl) mEl.innerText = m;
+    if(sEl) sEl.innerText = s;
+    if(dlEl) dlEl.innerText = d === 1 ? "DAY" : "DAYS";
+  };
+
+  setInterval(updateTimer, 1000); 
+  updateTimer();
+});
+</script>
+
+{% schema %}
+{
+  "name": "Custom Banner",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Background Image" },
+    { "type": "header", "content": "Card Styling" },
+    { "type": "range", "id": "bg_opacity", "min": 0, "max": 1, "step": 0.1, "label": "Card Opacity", "default": 0.4 },
+    { "type": "range", "id": "bg_blur", "min": 0, "max": 20, "step": 1, "unit": "px", "label": "Blur Intensity", "default": 4 },
+    { "type": "range", "id": "card_radius", "min": 0, "max": 50, "step": 1, "unit": "px", "label": "Corner Radius", "default": 5 },
+    { "type": "range", "id": "card_border_width", "min": 0, "max": 10, "step": 1, "unit": "px", "label": "Border Width", "default": 1 },
+    { "type": "color", "id": "card_border_color", "label": "Border Color", "default": "#E6E6E6" },
+    { "type": "color", "id": "accent_color", "label": "Accent Color", "default": "#B1916B" },
+    { "type": "header", "content": "Title Typography" },
+    { "type": "text", "id": "title_1", "label": "Main Title", "default": "AWESOME" },
+    { "type": "text", "id": "title_2", "label": "Highlight Title", "default": "SALE!" },
+    { "type": "range", "id": "title_size", "min": 20, "max": 100, "step": 2, "unit": "px", "label": "Font Size", "default": 48 },
+    { "type": "color", "id": "title_color", "label": "Main Color", "default": "#333333" },
+    { "type": "select", "id": "title_weight", "label": "Main Weight", "options": [
+        {"value": "400", "label": "400"}, {"value": "500", "label": "500"}, {"value": "600", "label": "600"}, {"value": "700", "label": "700"}, {"value": "800", "label": "800"}, {"value": "900", "label": "900"}
+      ], "default": "700" },
+    { "type": "select", "id": "title_weight_acc", "label": "Highlight Weight", "options": [
+        {"value": "400", "label": "400"}, {"value": "500", "label": "500"}, {"value": "600", "label": "600"}, {"value": "700", "label": "700"}, {"value": "800", "label": "800"}, {"value": "900", "label": "900"}
+      ], "default": "700" },
+    { "type": "header", "content": "Discount Typography" },
+    { "type": "text", "id": "disc_pre", "label": "Text Before", "default": "Your discount of" },
+    { "type": "text", "id": "disc_highlight", "label": "Highlighted Text", "default": "$67 off" },
+    { "type": "text", "id": "disc_post", "label": "Text After", "default": "has been applied." },
+    { "type": "range", "id": "disc_size", "min": 12, "max": 40, "step": 1, "unit": "px", "label": "Size", "default": 24 },
+    { "type": "color", "id": "disc_color", "label": "Base Color", "default": "#555555" },
+    { "type": "select", "id": "disc_weight", "label": "Base Weight", "options": [
+        {"value": "400", "label": "400"}, {"value": "500", "label": "500"}, {"value": "600", "label": "600"}, {"value": "700", "label": "700"}, {"value": "800", "label": "800"}, {"value": "900", "label": "900"}
+      ], "default": "400" },
+    { "type": "select", "id": "disc_weight_acc", "label": "Highlight Weight", "options": [
+        {"value": "400", "label": "400"}, {"value": "500", "label": "500"}, {"value": "600", "label": "600"}, {"value": "700", "label": "700"}, {"value": "800", "label": "800"}, {"value": "900", "label": "900"}
+      ], "default": "700" },
+    { "type": "header", "content": "Order Button" },
+    { "type": "text", "id": "btn_text", "label": "Button Text", "default": "Order Now" },
+    { "type": "url", "id": "link", "label": "Link" },
+    { "type": "color", "id": "order_btn_bg", "label": "Background Color", "default": "#C19B61" },
+    { "type": "color", "id": "order_btn_text_color", "label": "Text Color", "default": "#ffffff" },
+    { "type": "range", "id": "btn_text_size", "min": 12, "max": 30, "step": 1, "unit": "px", "label": "Size", "default": 18 },
+    { "type": "select", "id": "btn_weight", "label": "Weight", "options": [
+        {"value": "400", "label": "400"}, {"value": "500", "label": "500"}, {"value": "600", "label": "600"}, {"value": "700", "label": "700"}, {"value": "800", "label": "800"}, {"value": "900", "label": "900"}
+      ], "default": "700" },
+    { "type": "header", "content": "PayPal Button" },
+    { "type": "checkbox", "id": "show_paypal", "label": "Show Button", "default": true },
+    { "type": "text", "id": "paypal_btn_text", "label": "Label Text", "default": "Pay\nwith" },
+    { "type": "image_picker", "id": "paypal_icon", "label": "PayPal Logo" },
+    { "type": "color", "id": "paypal_btn_bg", "label": "Background Color", "default": "#FFC439" },
+    { "type": "color", "id": "paypal_btn_text_color", "label": "Text Color", "default": "#000000" },
+    { "type": "range", "id": "paypal_text_size", "min": 12, "max": 60, "step": 1, "unit": "px", "label": "Size", "default": 32 },
+    { "type": "select", "id": "paypal_weight", "label": "Weight", "options": [
+        {"value": "400", "label": "400"}, {"value": "500", "label": "500"}, {"value": "600", "label": "600"}, {"value": "700", "label": "700"}, {"value": "800", "label": "800"}, {"value": "900", "label": "900"}
+      ], "default": "700" },
+    { "type": "header", "content": "Afterpay Section" },
+    { "type": "checkbox", "id": "show_afterpay", "label": "Show Afterpay", "default": true },
+    { "type": "richtext", "id": "afterpay_full_text", "label": "Text" },
+    { "type": "image_picker", "id": "afterpay_icon", "label": "Afterpay Logo" },
+    { "type": "color", "id": "afterpay_badge_bg", "label": "Badge Color", "default": "#B2FCE4" },
+    { "type": "color", "id": "after_color", "label": "Text Color", "default": "#666666" },
+    { "type": "range", "id": "after_text_size", "min": 10, "max": 30, "step": 1, "unit": "px", "label": "Size", "default": 16 },
+    { "type": "select", "id": "after_weight", "label": "Weight", "options": [
+        {"value": "400", "label": "400"}, {"value": "500", "label": "500"}, {"value": "600", "label": "600"}, {"value": "700", "label": "700"}, {"value": "800", "label": "800"}, {"value": "900", "label": "900"}
+      ], "default": "400" },
+    { "type": "header", "content": "Timer Styling" },
+    { "type": "text", "id": "sale_text", "label": "Heading", "default": "Valentine's Day Sale Ends at 12PM Feb 14th 2025" },
+    { "type": "text", "id": "end_date", "label": "End Date (MM/DD/YYYY HH:MM:SS)", "default": "02/14/2026 12:00:00" },
+    { "type": "color", "id": "timer_block_title", "label": "Title Color", "default": "#333333" },
+    { "type": "color", "id": "timer_block_bg", "label": "Block Background", "default": "#5D5D5D" },
+    { "type": "color", "id": "timer_block_text", "label": "Block Text", "default": "#FFFFFF" }
+  ],
+  "presets": [{ "name": "Custom Banner" }]
+}
+{% endschema %}
